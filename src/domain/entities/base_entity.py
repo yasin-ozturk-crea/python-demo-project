@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Dict, Any
 from uuid import uuid4
 
 from pydantic import BaseModel, Field
@@ -11,6 +11,9 @@ class BaseEntity(BaseModel):
 
     class Config:
         orm_mode = True
+
+    def to_orm(self) -> Dict[str, Any]:
+        return self.dict()
 
 
 class BaseStrEntity(BaseEntity):

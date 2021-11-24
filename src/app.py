@@ -12,4 +12,7 @@ def create_app() -> Flask:
     from src.infrastructure.persistance.db_manager import DBManager
     DBManager.start_db(config, app)
 
+    from src.api.helpers.api_manager import APIManager
+    APIManager(app)
+
     return app
